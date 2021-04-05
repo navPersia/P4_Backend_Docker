@@ -4,7 +4,7 @@ services:
   db:
     build: ./db
     environment:
-      MYSQL_DATABASE: axxes
+      MYSQL_DATABASE: Axxes
       MYSQL_ROOT_PASSWORD: 1234
       MYSQL_USER: root
       MYSQL_PASSWORD: 1234
@@ -16,9 +16,9 @@ services:
   web:
     build: ./web
     environment:
-      MYSQL_DATABASE: axxes
+      MYSQL_DATABASE: Axxes
       MYSQL_USER: root
-      MYSQL_PASSWORD: 1234!
+      MYSQL_PASSWORD: 1234
       MYSQL_PORT: 3306
       DATABASE_HOST: db
     ports:
