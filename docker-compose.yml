@@ -16,7 +16,7 @@ services:
     restart: on-failure
 
   mysql:
-    build: ./db/
+    build: ./db
     container_name: 'mysql'
     restart: 'always'
     ports:
