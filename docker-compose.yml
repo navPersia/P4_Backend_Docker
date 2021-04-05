@@ -4,7 +4,7 @@ services:
   webserver:
     build:
       context: ./webserver
-    container_name: "navid-webserver"
+    container_name: "webserver"
     restart: "always"
     ports:
       - "80:80"
@@ -45,6 +45,7 @@ services:
 
   backend:
     build: ./backend
+    container_name: "backend"
     environment:
       MYSQL_DATABASE: Axxes
       MYSQL_USER: root
