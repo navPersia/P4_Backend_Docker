@@ -1,38 +1,23 @@
 version: "3"
 
 services:
-  webserver:
-    build:
-      context: ./webserver
-    container_name: "webserver"
-    restart: "always"
+  mysql:
+    build: ./mysql
+    container_name: "mysql"
     ports:
-      - "80:80"
-      - "443:443"
-    links:
-      - mysql
+      - 3306:3306
+    restart: "always"
     volumes:
-      - ./www:/var/www/html
-      - ./config/vhosts:/etc/apache2/sites-enabled
-      - ./logs/apache2:/var/log/apache2
+      - ./data/mysql:/var/lib/mysql
   
   backend:
     build: ./backend
-    image: amakundu/nodejs-mysql-app
     depends_on: 
       - mysql
-    environment:
-      MYSQL_HOST: mysql
-      MYSQL_ROOT_PASSWORD: navid7373
-      MYSQL_DATABASE: Axxes
-      MYSQL_USER: navid
-      MYSQL_PASSWORD: navid7373
     container_name: "backend"
-    links:
-      - mysql
+    restart: always
     environment:
-      PMA_HOST: mysql
-      PMA_PORT: 3306
+      - DATABASE_HOST=mysql
     ports:
       - "3000:3000"
 
