@@ -15,23 +15,18 @@ services:
       - ./www:/var/www/html
       - ./config/vhosts:/etc/apache2/sites-enabled
       - ./logs/apache2:/var/log/apache2
-
-  mysql:
-    image: mysql/mysql-server:8.0
-    container_name: "mysql"
-    restart: "always"
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./data/mysql:/var/lib/mysql
+  
+  backend:
+    build: ./backend
+    image: amakundu/nodejs-mysql-app
+    depends_on: 
+      - mysql
     environment:
+      MYSQL_HOST: mysql
       MYSQL_ROOT_PASSWORD: navid7373
       MYSQL_DATABASE: Axxes
       MYSQL_USER: navid
       MYSQL_PASSWORD: navid7373
-  
-  backend:
-    build: ./backend
     container_name: "backend"
     links:
       - mysql
