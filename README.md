@@ -13,7 +13,7 @@ sudo docker stop backend
 
 docker system prune -a
 
-git pull https://navpersia:Killerfrost1994@github.com/navPersia/P4_Backend_Docker.git
+git pull https://0000000:00000000@github.com/navPersia/P4_Backend_Docker.git
 docker-compose up -d
 
 ```
